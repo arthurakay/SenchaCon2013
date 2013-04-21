@@ -14,16 +14,13 @@
                 // TODO: This application has been newly launched. Initialize
                 // your application here.
 
-                /*
                 MSApp.execUnsafeLocalFunction(function () {
                     var fileref = document.createElement('script');
-                    fileref.setAttribute("id", "microloader");
                     fileref.setAttribute("type", "text/javascript");
-                    fileref.setAttribute("src", "touch/microloader/development.js");
+                    fileref.setAttribute("src", "app/app.js");
 
                     document.getElementsByTagName("head")[0].appendChild(fileref);
                 });
-                */
             } else {
                 // TODO: This application has been reactivated from suspension.
                 // Restore application state here.
