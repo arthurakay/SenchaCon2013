@@ -60,6 +60,7 @@
     <Content Include="images\storelogo.png" />
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
+    <Content Include="js\global.js" />
     <None Include="SenchaCon_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

@@ -12,14 +12,22 @@
     <!-- SenchaCon references -->
     <link href="/css/default.css" rel="stylesheet" />
     <script src="/js/default.js"></script>
+    <script src="/js/global.js"></script>
 </head>
 <body>
     
-    <div id="appLoadingIndicator">
+<!--    <div id="appLoadingIndicator">
         <div></div>
         <div></div>
         <div></div>
-    </div>
+    </div>-->
+
+    
+    <img id="imageImg" height="100" width="100" />
+    <canvas id="imageCanvas" height="100" width="100" style="background-color: #fff; border: 1px solid #f00;"></canvas>
+
+    <button id="camera" onclick="capturePhoto()">Get image...</button>
+    <button id="share" onclick="shareData()">Share...</button>
 
 </body>
 </html>
