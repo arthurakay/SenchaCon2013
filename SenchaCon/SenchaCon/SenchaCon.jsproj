@@ -63,6 +63,7 @@
     <Content Include="app.json" />
     <Content Include="app\app.js" />
     <Content Include="app\controller\Main.js" />
+    <Content Include="app\view\Control.js" />
     <Content Include="app\view\Main.js" />
     <Content Include="app\view\Viewport.js" />
     <Content Include="build.xml" />

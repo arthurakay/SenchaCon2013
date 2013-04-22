@@ -1,7 +1,8 @@
 Ext.define('SenchaCon.view.Viewport', {
     extend: 'Ext.container.Viewport',
     requires:[
-        'Ext.tab.Panel',
+        'SenchaCon.view.Main',
+        'SenchaCon.view.Control',
         'Ext.layout.container.Border'
     ],
 
@@ -9,16 +10,17 @@ Ext.define('SenchaCon.view.Viewport', {
         type: 'border'
     },
 
-    items: [{
-        region: 'west',
-        xtype: 'panel',
-        title: 'west',
-        width: 150
-    },{
-        region: 'center',
-        xtype: 'tabpanel',
-        items:[{
-            title: 'Center Tab 1'
-        }]
-    }]
+    items: [
+        {
+            region: 'west',
+            xtype: 'SenchaCon-control',
+            title: '',
+            width: 300
+        },
+        {
+            region: 'center',
+            xtype: 'SenchaCon-main',
+            title : 'SenchaCon 2013 - Building Windows 8 apps with Ext JS'
+        }
+    ]
 });
