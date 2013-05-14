@@ -31,9 +31,7 @@ Ext.define('SenchaCon.controller.Main', {
     },
 
     takePhoto: function (button, e, opts) {
-        var canvas = this.getCanvas().el.down('canvas').dom,
-            ctx = canvas.getContext('2d'),
-            img = this.getImage();
+        var img = this.getImage();
 
         try {
             //WinRT Camera API
@@ -51,7 +49,7 @@ Ext.define('SenchaCon.controller.Main', {
                             imgDom = img.el.dom;
 
                         imgDom.onload = function () {
-                            ctx.drawImage(imgDom, 0, 0, canvas.width, canvas.height);
+                            img.fireEvent('imageready');
                             imgDom.onload = null;
                         };
 

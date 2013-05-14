@@ -22,7 +22,8 @@ Ext.application({
     ],
 
     controllers: [
-        'Main'
+        'Main',
+        'Filter'
     ],
 
     autoCreateViewport: true,

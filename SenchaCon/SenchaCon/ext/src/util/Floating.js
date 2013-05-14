@@ -23,7 +23,7 @@ Build date: 2013-03-11 22:33:40 (aed16176e68b5e8aa1433452b12805c0ad913836)
  */
 Ext.define('Ext.util.Floating', {
 
-    uses: ['Ext.Layer', 'Ext.window.Window'],
+    uses: ['Ext.dom.Layer', 'Ext.window.Window'],
 
     /**
      * @cfg {Boolean} focusOnToFront

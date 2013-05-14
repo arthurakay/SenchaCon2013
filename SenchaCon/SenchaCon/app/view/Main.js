@@ -2,6 +2,12 @@ Ext.define('SenchaCon.view.Main', {
     xtype : 'SenchaCon-main',
     extend: 'Ext.Panel',
 
+    requires: [
+        'Ext.layout.container.VBox',
+        'Ext.Img',
+        'Ext.Component'
+    ],
+
     layout: {
         type: 'vbox',
         align: 'stretch'

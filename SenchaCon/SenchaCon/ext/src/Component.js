@@ -90,7 +90,7 @@ Ext.define('Ext.Component', {
 
     uses: [
         'Ext.util.DelayedTask',
-        'Ext.Layer',
+        'Ext.dom.Layer',
         'Ext.resizer.Resizer',
         'Ext.util.ComponentDragger'
     ],

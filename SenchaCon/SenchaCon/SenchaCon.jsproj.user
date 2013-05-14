@@ -4,4 +4,7 @@
     <ReferenceCachePath>C:\Users\Arthur\AppData\Local\Temp\SenchaCon_refcache</ReferenceCachePath>
     <ShowAllFiles>false</ShowAllFiles>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebuggerFlavor>AppHostLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
 </Project>
