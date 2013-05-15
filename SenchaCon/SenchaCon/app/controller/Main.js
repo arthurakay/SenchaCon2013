@@ -2,36 +2,31 @@ Ext.define('SenchaCon.controller.Main', {
     extend: 'Ext.app.Controller',
 
     refs: [
-        {
-            ref: 'image',
-            selector: '#OriginalPhoto'
-        },
-
-        {
-            ref: 'canvas',
-            selector: '#ModifiedPhoto'
-        }
+        { ref: 'image', selector: '#OriginalPhoto' },
+        { ref: 'canvas', selector: '#ModifiedPhoto' },
+        { ref: 'shareButton', selector: 'button#SharePhoto' }
     ],
 
     init: function () {
         this.control({
-            'button#TakePhoto': {
-                'click' : this.takePhoto
-            },
+            'button#TakePhoto': { 'click' : this.takePhoto },
 
-            'button#SharePhoto': {
-                'click': this.sharePhoto
-            },
+            'button#SharePhoto': { 'click': this.sharePhoto },
+
+            'button#PhotoLibrary' : { 'click' : this.getPhotoFromLibrary },
 
             //TODO: handlers to resize the canvas element
-            '#ModifiedPhoto': {
-                'resize': this.resizeCanvas
-            }
+            '#ModifiedPhoto': { 'resize': this.resizeCanvas }
         });
     },
 
     takePhoto: function (button, e, opts) {
-        var img = this.getImage();
+        //var img = this.getImage();
+        //img.setSrc('/resources/flowers_small.jpg');
+        //img.fireEvent('imageready');
+
+        var me = this,
+            img = me.getImage();
 
         try {
             //WinRT Camera API
@@ -42,6 +37,8 @@ Ext.define('SenchaCon.controller.Main', {
             };
 
             dialog.photoSettings.croppedAspectRatio = aspectRatio;
+            dialog.photoSettings.maxResolution = Windows.Media.Capture.CameraCaptureUIMaxPhotoResolution.smallVga;
+
             dialog.captureFileAsync(Windows.Media.Capture.CameraCaptureUIMode.photo).then(
                 function (file) {
                     if (file) {
@@ -54,6 +51,8 @@ Ext.define('SenchaCon.controller.Main', {
                         };
 
                         img.setSrc(imgUrl);
+
+                        me.getShareButton().enable();
                     }
                     else {
                         //No Photo captured
@@ -70,12 +69,6 @@ Ext.define('SenchaCon.controller.Main', {
     },
 
     sharePhoto: function (button, e, opts) {
-        var canvas = this.getCanvas().el.down('canvas').dom,
-            img = this.getImage();
-
-        //TODO: this needs to be an actual file?
-        SenchaCon.file = img.el.src;
-
         Windows.ApplicationModel.DataTransfer.DataTransferManager.showShareUI();
     },
 
@@ -84,5 +77,28 @@ Ext.define('SenchaCon.controller.Main', {
 
         canvas.width = width;
         canvas.height = height;
+    },
+
+    getPhotoFromLibrary: function () {
+        var me = this;
+        var picker = Windows.Storage.Pickers.FileOpenPicker();
+
+        // Which file types will we be showing?
+        picker.fileTypeFilter.append(".jpg");
+        picker.fileTypeFilter.append(".gif");
+        picker.fileTypeFilter.append(".png");
+
+        // Grab the selected folder, reference as 'folder'
+        picker.pickSingleFileAsync().then(function (file) {
+            var img = me.getImage(),
+                imgDom = img.el.dom;
+
+            imgDom.onload = function () {
+                img.fireEvent('imageready');
+                imgDom.onload = null;
+            };
+
+            img.setSrc(URL.createObjectURL(file, { oneTimeOnly: true }));
+        });
     }
 });

@@ -1,14 +1,7 @@
 ﻿var shareDataHandler = function (e) {
+    console.log('shareDataHandler...');
+
     var request = e.request;
-    request.data.properties.title = "SenchaCon wants to share...";
-    request.data.properties.description = "Art's really cool SenchaCon session!";
-
-    var reference = Windows.Storage.Streams.RandomAccessStreamReference.createFromFile(SenchaCon.file);
-    request.data.properties.thumbnail = reference;
-
-    //request.data.setBitmap(reference);
-    //request.data.setText("Hello world!"); //TODO: does this do anything?
-
     var deferral = request.getDeferral();
 
     // create an html fragment
@@ -26,7 +19,11 @@
     dataWriter.writeBuffer(imgData);
 
     dataWriter.storeAsync().done(function () {
+        console.log('storeAsync...');
+
         dataWriter.flushAsync().done(function () {
+            console.log('flushAsync...');
+
             var imgStream = dataWriter.detachStream();
             imgStream.seek(0);
             var streamReference = Windows.Storage.Streams.RandomAccessStreamReference.createFromStream(imgStream);
@@ -34,7 +31,11 @@
             dataPackage.resourceMap["shareImage.png"] = streamReference;
 
             dataPackage.setHtmlFormat(safeHtml);
+
             request.data = dataPackage;
+            request.data.properties.title = "SenchaCon wants to share...";
+            request.data.properties.description = "Art's really cool SenchaCon session!";
+
             deferral.complete();
         });
     });
@@ -42,9 +43,9 @@
 };
 
 var getImageDataFromCanvas = function () {
-    var canvas1 = document.getElementById("MyCanvas");
-    var myImage = canvas1.toDataURL("image/png");      // Get the data as an image.
-    return myImage.substr(22);
+    var canvas = document.getElementsByTagName("canvas")[0];
+    var img = canvas.toDataURL("image/png");      // Get the data as an image.
+    return img.substr(22);
 };
 
 if (Windows.ApplicationModel) {

@@ -48,8 +48,8 @@
         this.stage = new createjs.Stage(canvas);
         this.bmp = new createjs.Bitmap(img);
 
-        this.bmp.scaleX = this.bmp.scaleY = 2;
-        this.bmp.cache(0, 0, img.width, img.height);
+        this.bmp.scaleX = this.bmp.scaleY = 1;
+        this.bmp.cache(0, 0, canvas.width, canvas.height, 0.5); //50% of the original resolution... speeds up the processing
 
         this.stage.addChild(this.bmp);
 
@@ -91,7 +91,6 @@
     },
 
     updateImage : function () {
-        //TODO: can I just apply this to my existing canvas?
         this.bmp.filters = this.imageFilters;
         this.bmp.updateCache();
         this.stage.update();

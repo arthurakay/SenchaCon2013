@@ -17,14 +17,21 @@
             items: [
                 {
                     xtype: 'button',
-                    scale: 'large',
-                    iconCls : '',
-                    itemId: 'TakePhoto',
-                    text: 'Take Picture...'
+                    scale: 'small',
+                    iconCls: '',
+                    itemId: 'PhotoLibrary',
+                    text: 'Library...'
                 },
                 {
                     xtype: 'button',
-                    scale: 'large',
+                    scale: 'small',
+                    iconCls : '',
+                    itemId: 'TakePhoto',
+                    text: 'Camera...'
+                },
+                {
+                    xtype: 'button',
+                    scale: 'small',
                     iconCls: '',
                     itemId: 'SharePhoto',
                     disabled: true,
@@ -41,7 +48,7 @@
                     xtype: 'slider',
                     itemId: 'BrightnessSlider',
                     fieldLabel: 'Brightness',
-                    value: 50,
+                    value: 0,
                     increment: 10,
                     minValue: 0,
                     maxValue: 100,
@@ -51,7 +58,7 @@
                     xtype: 'slider',
                     itemId: 'ContrastSlider',
                     fieldLabel: 'Contrast',
-                    value: 50,
+                    value: 0,
                     increment: 10,
                     minValue: 0,
                     maxValue: 100,
@@ -61,7 +68,7 @@
                     xtype: 'slider',
                     itemId: 'HueSlider',
                     fieldLabel: 'Hue',
-                    value: 50,
+                    value: 0,
                     increment: 10,
                     minValue: 0,
                     maxValue: 100,
@@ -71,7 +78,7 @@
                     xtype: 'slider',
                     itemId: 'SaturationSlider',
                     fieldLabel: 'Saturation',
-                    value: 50,
+                    value: 0,
                     increment: 10,
                     minValue: 0,
                     maxValue: 100,
@@ -89,9 +96,9 @@
                     itemId: 'HorizontalBlurSlider',
                     fieldLabel: 'Horizontal',
                     value: 0,
-                    increment: 10,
+                    increment: 5,
                     minValue: 0,
-                    maxValue: 100,
+                    maxValue: 30,
                     width: 250
                 },
                 {
@@ -99,9 +106,9 @@
                     itemId: 'VerticalBlurSlider',
                     fieldLabel: 'Vertical',
                     value: 0,
-                    increment: 10,
+                    increment: 5,
                     minValue: 0,
-                    maxValue: 100,
+                    maxValue: 30,
                     width: 250
                 }
             ]
@@ -115,30 +122,30 @@
                     xtype: 'slider',
                     itemId: 'RedSlider',
                     fieldLabel: 'Red',
-                    value: 50,
-                    increment: 10,
+                    value: 255,
+                    increment: 5,
                     minValue: 0,
-                    maxValue: 100,
+                    maxValue: 255,
                     width: 250
                 },
                 {
                     xtype: 'slider',
                     itemId: 'GreenSlider',
                     fieldLabel: 'Green',
-                    value: 50,
-                    increment: 10,
+                    value: 255,
+                    increment: 5,
                     minValue: 0,
-                    maxValue: 100,
+                    maxValue: 255,
                     width: 250
                 },
                 {
                     xtype: 'slider',
                     itemId: 'BlueSlider',
                     fieldLabel: 'Blue',
-                    value: 50,
-                    increment: 10,
+                    value: 255,
+                    increment: 5,
                     minValue: 0,
-                    maxValue: 100,
+                    maxValue: 255,
                     width: 250
                 }
             ]

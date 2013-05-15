@@ -5019,6 +5019,7 @@
     <Content Include="resources\EaselJS-release_v0.6.1\tools\google-closure\README" />
     <Content Include="resources\EaselJS-release_v0.6.1\tools\README.txt" />
     <Content Include="resources\EaselJS-release_v0.6.1\VERSIONS.txt" />
+    <Content Include="resources\flowers_small.jpg" />
     <Content Include="sass\config.rb" />
     <Content Include="sass\example\bootstrap.css" />
     <Content Include="sass\example\custom.js" />
