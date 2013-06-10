@@ -13,14 +13,6 @@
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
                 // TODO: This application has been newly launched. Initialize
                 // your application here.
-
-                //MSApp.execUnsafeLocalFunction(function () {
-                //    var fileref = document.createElement('script');
-                //    fileref.setAttribute("type", "text/javascript");
-                //    fileref.setAttribute("src", "app/app.js");
-
-                //    document.getElementsByTagName("head")[0].appendChild(fileref);
-                //});
             } else {
                 // TODO: This application has been reactivated from suspension.
                 // Restore application state here.

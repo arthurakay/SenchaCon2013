@@ -2,6 +2,7 @@
     console.log('shareDataHandler...');
 
     var request = e.request;
+    var dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
     var deferral = request.getDeferral();
 
     // create an html fragment
@@ -9,7 +10,6 @@
         "<div><img src='shareImage.png' /></div>"
     );
 
-    // You can uncomment this line (and comment the above) to see a whole flow of converting a canvas to an image.
     var imgData = Windows.Security.Cryptography.CryptographicBuffer.decodeFromBase64String(
         getImageDataFromCanvas()
     );
@@ -43,12 +43,15 @@
 };
 
 var getImageDataFromCanvas = function () {
+    console.log('getImageDataFromCanvas');
+
     var canvas = document.getElementsByTagName("canvas")[0];
     var img = canvas.toDataURL("image/png");      // Get the data as an image.
     return img.substr(22);
 };
 
 if (Windows.ApplicationModel) {
+    console.log('Setting datarequested event handler...');
     var dtm = Windows.ApplicationModel.DataTransfer.DataTransferManager.getForCurrentView();
     dtm.addEventListener("datarequested", shareDataHandler);
 }

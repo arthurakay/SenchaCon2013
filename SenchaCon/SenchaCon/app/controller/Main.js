@@ -99,6 +99,8 @@ Ext.define('SenchaCon.controller.Main', {
             };
 
             img.setSrc(URL.createObjectURL(file, { oneTimeOnly: true }));
+
+            me.getShareButton().enable();
         });
     }
 });
