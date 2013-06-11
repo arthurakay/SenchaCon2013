@@ -23,12 +23,20 @@ Ext.application({
 
     controllers: [
         'Main',
-        'Filter'
+        'Filter',
+        'Share'
     ],
 
     autoCreateViewport: true,
 
     launch: function () {
         Ext.get('appLoadingIndicator').destroy();
+
+        if (Windows.ApplicationModel) {
+            var dtm = Windows.ApplicationModel.DataTransfer.DataTransferManager.getForCurrentView();
+            dtm.addEventListener("datarequested", function (e) {
+                Ext.globalEvents.fireEvent('datarequested', e);
+            });
+        }
     }
 });

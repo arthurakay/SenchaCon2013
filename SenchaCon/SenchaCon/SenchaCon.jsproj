@@ -65,6 +65,7 @@
     <Content Include="app\app.js" />
     <Content Include="app\controller\Filter.js" />
     <Content Include="app\controller\Main.js" />
+    <Content Include="app\controller\Share.js" />
     <Content Include="app\view\Control.js" />
     <Content Include="app\view\Main.js" />
     <Content Include="app\view\Viewport.js" />
@@ -739,7 +740,6 @@
     <Content Include="images\storelogo.png" />
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
-    <Content Include="js\global.js" />
     <Content Include="packages\ext-locale-af\.sencha\package\build-impl.xml" />
     <Content Include="packages\ext-locale-af\.sencha\package\codegen.json" />
     <Content Include="packages\ext-locale-af\.sencha\package\plugin.xml" />

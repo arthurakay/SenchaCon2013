@@ -21,10 +21,6 @@ Ext.define('SenchaCon.controller.Main', {
     },
 
     takePhoto: function (button, e, opts) {
-        //var img = this.getImage();
-        //img.setSrc('/resources/flowers_small.jpg');
-        //img.fireEvent('imageready');
-
         var me = this,
             img = me.getImage();
 
@@ -39,9 +35,11 @@ Ext.define('SenchaCon.controller.Main', {
             dialog.photoSettings.croppedAspectRatio = aspectRatio;
             dialog.photoSettings.maxResolution = Windows.Media.Capture.CameraCaptureUIMaxPhotoResolution.smallVga;
 
-            dialog.captureFileAsync(Windows.Media.Capture.CameraCaptureUIMode.photo).then(
+            dialog.captureFileAsync(Windows.Media.Capture.CameraCaptureUIMode.photo).done(
                 function (file) {
                     if (file) {
+                        SenchaCon.app.photo = file;
+
                         var imgUrl = URL.createObjectURL(file, { oneTimeOnly: true }),
                             imgDom = img.el.dom;
 
