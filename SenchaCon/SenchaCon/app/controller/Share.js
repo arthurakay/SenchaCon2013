@@ -4,7 +4,7 @@
     init: function () {
         this.listen({
             global: {
-                'datarequested' : this.shareCanvasImage
+                'datarequested': this.shareCanvasImage
             }
         });
     },
@@ -15,52 +15,29 @@
         return img.substr(22);
     },
 
-    shareStaticFile : function (e) {
-        var request = e.request;
-        request.data.properties.title = "SenchaCon wants to share...";
-        request.data.properties.description = "Art's really cool SenchaCon session!";
-
-        var reference = Windows.Storage.Streams.RandomAccessStreamReference.createFromFile(SenchaCon.app.photo);
-        request.data.properties.thumbnail = reference;
-        request.data.setBitmap(reference);
-    },
-
     shareCanvasImage : function (e) {
         var request = e.request;
-        var dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
         var deferral = request.getDeferral();
-
-        // create an html fragment
-        var safeHtml = Windows.ApplicationModel.DataTransfer.HtmlFormatHelper.createHtmlFormat(
-            "<div><img src='shareImage.png' /></div>"
-        );
 
         var imgData = Windows.Security.Cryptography.CryptographicBuffer.decodeFromBase64String(
             this.getImageDataFromCanvas()
         );
 
-        var memoryStream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
-        var dataWriter = new Windows.Storage.Streams.DataWriter(memoryStream);
-        dataWriter.writeBuffer(imgData);
+        Windows.Storage.KnownFolders.picturesLibrary.createFileAsync("transfer.png", Windows.Storage.CreationCollisionOption.replaceExisting).done(
+            function (file) {
+                Windows.Storage.FileIO.writeBufferAsync(file, imgData).done(function () {
+                    var streamReference = Windows.Storage.Streams.RandomAccessStreamReference.createFromFile(file);
 
-        dataWriter.storeAsync().done(function () {
+                    request.data.properties.title = "SenchaCon wants to share...";
+                    request.data.properties.description = "Art's really cool SenchaCon session!";
+                    request.data.properties.thumbnail = streamReference;
 
-            dataWriter.flushAsync().done(function () {
-                var imgStream = dataWriter.detachStream();
-                imgStream.seek(0);
-                var streamReference = Windows.Storage.Streams.RandomAccessStreamReference.createFromStream(imgStream);
+                    request.data.setStorageItems([file]);
+                    request.data.setBitmap(streamReference);
 
-                dataPackage.resourceMap["shareImage.png"] = streamReference;
-
-                dataPackage.setHtmlFormat(safeHtml);
-
-                request.data = dataPackage;
-                request.data.properties.title = "SenchaCon wants to share...";
-                request.data.properties.description = "Art's really cool SenchaCon session!";
-
-                deferral.complete();
-            });
-        });
-
+                    deferral.complete();
+                });
+            }
+        );
     }
 });
