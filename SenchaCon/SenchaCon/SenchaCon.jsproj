@@ -66,6 +66,8 @@
     <Content Include="app\controller\Filter.js" />
     <Content Include="app\controller\Main.js" />
     <Content Include="app\controller\Share.js" />
+    <Content Include="app\store\Chart.js" />
+    <Content Include="app\view\Chart.js" />
     <Content Include="app\view\Control.js" />
     <Content Include="app\view\Main.js" />
     <Content Include="app\view\Viewport.js" />
@@ -5033,7 +5035,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\model\" />
-    <Folder Include="app\store\" />
     <Folder Include="overrides\" />
     <Folder Include="sass\etc\" />
     <Folder Include="sass\src\" />

@@ -17,6 +17,7 @@ Ext.application({
     name: 'SenchaCon',
 
     views: [
+        'Chart',
         'Main',
         'Viewport'
     ],

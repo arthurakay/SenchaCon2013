@@ -3,8 +3,7 @@ Ext.define('SenchaCon.controller.Main', {
 
     refs: [
         { ref: 'image', selector: '#OriginalPhoto' },
-        { ref: 'canvas', selector: '#ModifiedPhoto' },
-        { ref: 'shareButton', selector: 'button#SharePhoto' }
+        { ref: 'canvas', selector: '#ModifiedPhoto' }
     ],
 
     init: function () {
@@ -49,8 +48,6 @@ Ext.define('SenchaCon.controller.Main', {
                         };
 
                         img.setSrc(imgUrl);
-
-                        me.getShareButton().enable();
                     }
                     else {
                         //No Photo captured
@@ -97,8 +94,6 @@ Ext.define('SenchaCon.controller.Main', {
             };
 
             img.setSrc(URL.createObjectURL(file, { oneTimeOnly: true }));
-
-            me.getShareButton().enable();
         });
     }
 });

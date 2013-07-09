@@ -87,32 +87,32 @@
             ]
         },
 
-        {
-            xtype: 'fieldset',
-            title : 'Blur Values',
-            items: [
-                {
-                    xtype: 'slider',
-                    itemId: 'HorizontalBlurSlider',
-                    fieldLabel: 'Horizontal',
-                    value: 0,
-                    increment: 5,
-                    minValue: 0,
-                    maxValue: 30,
-                    width: 250
-                },
-                {
-                    xtype: 'slider',
-                    itemId: 'VerticalBlurSlider',
-                    fieldLabel: 'Vertical',
-                    value: 0,
-                    increment: 5,
-                    minValue: 0,
-                    maxValue: 30,
-                    width: 250
-                }
-            ]
-        },
+        //{
+        //    xtype: 'fieldset',
+        //    title : 'Blur Values',
+        //    items: [
+        //        {
+        //            xtype: 'slider',
+        //            itemId: 'HorizontalBlurSlider',
+        //            fieldLabel: 'Horizontal',
+        //            value: 0,
+        //            increment: 5,
+        //            minValue: 0,
+        //            maxValue: 30,
+        //            width: 250
+        //        },
+        //        {
+        //            xtype: 'slider',
+        //            itemId: 'VerticalBlurSlider',
+        //            fieldLabel: 'Vertical',
+        //            value: 0,
+        //            increment: 5,
+        //            minValue: 0,
+        //            maxValue: 30,
+        //            width: 250
+        //        }
+        //    ]
+        //},
 
         {
             xtype: 'fieldset',

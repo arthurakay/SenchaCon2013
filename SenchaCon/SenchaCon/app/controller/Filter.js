@@ -2,6 +2,8 @@
     extend: 'Ext.app.Controller',
 
     refs: [
+        { ref: 'shareButton', selector: 'button#SharePhoto' },
+
         { ref: 'BrightnessSlider', selector: 'slider#BrightnessSlider' },
         { ref: 'ContrastSlider', selector: 'slider#ContrastSlider' },
         { ref: 'HueSlider', selector: 'slider#HueSlider' },
@@ -54,6 +56,8 @@
         this.stage.addChild(this.bmp);
 
         this.applyEffect();
+
+        this.getShareButton().enable();
     },
 
     onSliderChange: function (slider, newValue, thumb, eOpts) {
@@ -69,8 +73,8 @@
         var saturationValue =  this.getSaturationSlider().getValue();
         var hueValue = this.getHueSlider().getValue();
 
-        var blurXValue = this.getHorizontalBlurSlider().getValue();
-        var blurYValue = this.getVerticalBlurSlider().getValue();
+        //var blurXValue = this.getHorizontalBlurSlider().getValue();
+        //var blurYValue = this.getVerticalBlurSlider().getValue();
 
         var redChannelvalue = this.getRedSlider().getValue();
         var greenChannelValue = this.getGreenSlider().getValue();
@@ -81,7 +85,7 @@
 
         this.imageFilters = [
             new createjs.ColorMatrixFilter(this.colorMatrix),
-            new createjs.BoxBlurFilter(blurXValue, blurYValue, 2),
+            //new createjs.BoxBlurFilter(blurXValue, blurYValue, 2),
             new createjs.ColorFilter(redChannelvalue / 255, 1, 1, 1),
             new createjs.ColorFilter(1, greenChannelValue / 255, 1, 1),
             new createjs.ColorFilter(1, 1, blueChannelValue / 255, 1)
